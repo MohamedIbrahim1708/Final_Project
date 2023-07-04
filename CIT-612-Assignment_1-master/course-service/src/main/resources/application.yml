@@ -1,0 +1,58 @@
+server:
+  port: 8081
+
+# Database configurations
+spring:
+  application:
+    name: course-service
+
+  zipkin:
+    enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/university_db
+    username: root
+    password: 123456789
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    jpa:
+#      properties:
+#        hibernate:
+#          dialect: ${datasource.dialect}
+#          connection:
+#            characterEncoding: UTF-8
+#            CharSet: UTF-8
+#            useUnicode: true
+#      show-sql: true
+#      hibernate:
+#        ddl-auto: none
+#      config:
+#        import: optional:configserver:http://localhost:8086
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+  #eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    fetch-registry: false
+#    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://localhost:8761
+
+
+
+  #okta:
+#  oauth2:
+#    issuer: https://dev-88227110.okta.com/oauth2/default
+#    redirect_uri: http://localhost:8086
+#    audience: api://default
+#    client-id: 0oa954rbnb2RkdBpn5d7
+#    client-secret: XNv3ZdvEgQUe3EKC5woBu2MhUIE1QluzkxSIHrxs
+#    scopes: profile, email, offline_access

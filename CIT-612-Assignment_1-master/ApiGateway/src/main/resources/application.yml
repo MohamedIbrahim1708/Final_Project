@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/api/courses/**
+        - id: enrollment-service
+          uri: lb://enrollment-service
+          predicates:
+            - Path=/api/enrollments/**
+        - id: student-service
+          uri: lb://student-service
+          predicates:
+            - Path=/api/students/**
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka
+
+app:
+  eureka-server: localhost
+
+server:
+  port: 8022
+
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    fetch-registry: false
+#    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://localhost:8761
+
+
+
+
+
+
+
+#okta configuration for api gateway
+
+#okta:
+#  oauth2:
+#    issuer: https://dev-88227110.okta.com/oauth2/default
+#    redirect_uri: http://localhost:8086
+#    audience: api://default
+#    client-id: 0oa954rbnb2RkdBpn5d7
+#    client-secret: XNv3ZdvEgQUe3EKC5woBu2MhUIE1QluzkxSIHrxs
+#    scopes: profile, email, offline_access
